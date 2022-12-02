@@ -27,18 +27,16 @@ class BoggleAppTestCase(TestCase):
 
             self.assertIn('<table class="board">', html)
 
-            # test that you're getting a template
-
     def test_api_new_game(self):
         """Test starting a new game."""
 
         with self.client as client:
-            ...
-            # make a post request to /api/new-game
-            # get the response body as json using .get_json()
-            # test that the game_id is a string
-            # test that the board is a list
-            # test that the game_id is in the dictionary of games (imported from app.py above)
+            response = client.post('/api/new-game')
+            json_body = response.get_json()
+
+            self.assertIsInstance(json_body['game_id'], str)
+            self.assertIsInstance(json_body['board'], list)
+            self.assertIn(json_body['game_id'], games)
 
     def test_score_word(self):
         """Test if word is valid"""

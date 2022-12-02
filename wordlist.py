@@ -15,6 +15,8 @@ class WordList:
             True
             >>> wl.check_word('ZAVID')
             False
+            >>> wl.check_word('cat')
+            False
 
         """
 
